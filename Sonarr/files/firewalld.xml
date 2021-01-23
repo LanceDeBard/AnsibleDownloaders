@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+<short>sonarr</short>
+<description>Grocery List Progrom</description>
+<port port="8704" protocol="tcp"/>
+<port port="8989" protocol="tcp"/>
+</service>

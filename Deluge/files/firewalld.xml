@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+<short>deluge</short>
+<description>deluge downloader</description>
+<port port="8112" protocol="tcp"/>
+<port port="8112" protocol="udp"/>
+<port port="58846" protocol="tcp"/>
+<port port="58846" protocol="udp"/>
+</service>

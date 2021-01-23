@@ -1,0 +1,51 @@
+---
+- hosts: otaserver
+  become: yes
+  vars_files:
+    - vars/vars.yaml
+
+  tasks:
+    - name: Copy Firewall Definitions for Deluge to Server
+      copy: 
+        src: files/firewalld.xml
+        dest: /etc/firewalld/services/{{ containername }}.xml
+      notify: reload firewalld
+      
+    - name: Flush Handler for firewall
+      meta: flush_handlers
+
+    - name: Pull latest image for container
+      docker_image:
+        name: "{{ image }}:latest"
+        source: pull
+
+    - name: Run the Deluge Container
+      docker_container:
+        image: "{{ image }}"
+        name:  "{{ containername }}"
+        network_mode: "{{ networkmode }}"
+        volumes: "{{ externalvolumes }}"
+        published_ports: "{{ usedports }}"
+        env:  "{{ enviroment }}"
+        state: started
+        restart_policy: unless-stopped
+
+          #    - name: Disable SeLinux
+          #      selinux:
+          #        policy: targeted
+          #        state: permissive
+
+    - name: reload firewalld
+      shell: firewall-cmd --reload
+
+  handlers:
+    # Only run when service file is copied
+    - name: reload firewalld
+      shell: firewall-cmd --reload
+      notify: Add to firewalld
+    # Only run when service file is copied
+    - name: Add to firewalld
+      shell: firewall-cmd --zone=public --add-service={{ containername }} --permanent
+
+
+

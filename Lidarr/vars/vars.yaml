@@ -1,0 +1,20 @@
+---
+ image: linuxserver/lidarr
+ containername: lidarr
+ networkmode: bridge
+ externalvolumes: 
+  # - <Path/To/File>:<Mapped/In/Container>
+  - /mnt/External/VMs/Docker/lidarr:/config
+  - /mnt/External/Media/Music:/music
+  - /mnt/Overdrive/Downloads/Lidarr:/downloads
+  - /mnt/Overdrive/Downloads/InProgress:/downloads/InProgress
+  - /mnt/Overdrive/Downloads/Completed:/downloads/Completed
+  - /mnt/Overdrive/Downloads/Blackhole:/downloads/Blackhole
+ usedports: 
+  # - Port1:Port2
+  - 8703:8686
+ enviroment: 
+   PUID: "1000"
+   PGID: "1000"
+   UMASK_SET: "002"
+   TZ: America/New_York

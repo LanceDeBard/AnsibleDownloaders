@@ -1,0 +1,15 @@
+---
+ image: linuxserver/sonarr
+ containername: sonarr
+ networkmode: bridge
+ externalvolumes: 
+   - /mnt/External/VMs/Docker/sonarr:/config
+   - /mnt/External/Media/Vids/TV:/tv
+   - /mnt/Overdrive/Downloads/Completed:/downloads
+ usedports: 
+   - 8704:8989
+ enviroment: 
+   PUID: "1000"
+   PGID: "1000"
+   UMASK_SET: "002"
+   TZ: America/New_York

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+<short>Radarr</short>
+<description>Movie Downloader</description>
+<port port="8705" protocol="tcp"/>
+</service>

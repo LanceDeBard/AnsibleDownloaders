@@ -1,0 +1,15 @@
+---
+# This is the vars file for a jackett server
+ image: linuxserver/jackett
+ containername: jackett
+ networkmode: bridge
+ externalvolumes: 
+    - /mnt/External/VMs/Docker/jackett:/config
+    - /mnt/Overdrive/Downloads/Blackhole:/downloads/
+ usedports: 
+    - 8701:9117
+ enviroment: 
+   PUID: "1000"
+   PGID: "1000"
+   TZ: America/New_York
+   AUTO_UPDATE: "true"

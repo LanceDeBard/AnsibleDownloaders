@@ -1,0 +1,17 @@
+---
+ image: linuxserver/radarr
+ containername: radarr
+ networkmode: bridge
+ externalvolumes: 
+  # - <Path/To/File>:<Mapped/In/Container>
+  - /mnt/External/VMs/Docker/radarr
+  - /mnt/External/Media/Vids/Movies:/movies
+  - /mnt/Overdrive/Downloads:/downloads
+ usedports: 
+  # - Host:Container
+  - 8705:7878
+ enviroment: 
+   PUID: "1000"
+   PGID: "1000"
+   UMASK_SET: "002"
+   TZ: America/New_York

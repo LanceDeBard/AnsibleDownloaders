@@ -1,0 +1,24 @@
+---
+- hosts: otaserver
+  become: yes
+  vars_files:
+    - vars/vars.yaml
+
+  tasks:
+
+    - name: Pull latest image for container
+      docker_image:
+        name: "{{ image }}"
+        source: pull
+        force_source: true
+
+    - name: Run the Deluge Container
+      docker_container:
+        image: "{{ image }}"
+        name:  "{{ containername }}"
+        network_mode: host
+        volumes: "{{ externalvolumes }}"
+        published_ports: "{{ usedports }}"
+        env:  "{{ enviroment }}"
+        state: started
+        restart_policy: always

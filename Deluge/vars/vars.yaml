@@ -1,0 +1,18 @@
+---
+ image: linuxserver/deluge
+ containername: deluge
+ externalvolumes: 
+   - /mnt/External/VMs/Docker/deluge:/config
+   - /mnt/Overdrive/Downloads/InProgress:/downloads/InProgress
+   - /mnt/Overdrive/Downloads/Completed:/downloads/Completed
+   - /mnt/Overdrive/Downloads/Blackhole:/downloads/Blackhole
+   - /mnt/External/Media:/drives/Media
+   - /mnt/Library:/downloads/Books
+ usedports: 
+   - 8112:8112
+   - 58846:58846
+ enviroment: 
+   PUID: "1000"
+   PGID: "1000"
+   UMASK_SET: "002"
+   TZ: America/New_York

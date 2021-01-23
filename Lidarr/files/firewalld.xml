@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+<short>lidarr</short>
+<description>Music Library Manager</description>
+<port port="8703" protocol="tcp"/>
+</service>

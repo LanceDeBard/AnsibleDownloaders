@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+<short>jackett</short>
+<description>jackett downloader</description>
+<port port="8701" protocol="tcp"/>
+</service>
